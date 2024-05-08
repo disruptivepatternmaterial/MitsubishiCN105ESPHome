@@ -236,8 +236,8 @@ void CN105Climate::publishWantedSettingsStateToHA() {
         this->target_temperature = this->wantedSettings.temperature;
         //this->currentSettings.temperature = this->wantedSettings.temperature;
     }
-    this->target_temperature_low = 55.5;
-    this->target_temperature_high = 95.5;
+    this->target_temperature_low = 18.5;
+    this->target_temperature_high = 30.5;
 
 
     // publish to HA
