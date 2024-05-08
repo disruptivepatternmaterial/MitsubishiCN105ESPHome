@@ -156,7 +156,6 @@ void CN105Climate::controlFan() {
 }
 void CN105Climate::controlTemperature() {
     float setting = this->target_temperature;
-
     float cool_setpoint = this->target_temperature_low;
     float heat_setpoint = this->target_temperature_high;
     //float humidity_setpoint = this->target_humidity;
