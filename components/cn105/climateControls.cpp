@@ -203,6 +203,10 @@ void CN105Climate::controlMode() {
         ESP_LOGI("control", "changing mode to OFF");
         this->setPowerSetting("OFF");
         break;
+    case climate::CLIMATE_MODE_HEAT_COOL:
+        ESP_LOGI("control", "changing mode to HEAT_COOL");
+        this->setPowerSetting("OFF");
+        break;
     default:
         ESP_LOGW("control", "unsupported mode");
     }
