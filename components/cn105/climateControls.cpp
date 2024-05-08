@@ -205,7 +205,7 @@ void CN105Climate::controlMode() {
         break;
     case climate::CLIMATE_MODE_HEAT_COOL:
         ESP_LOGI("control", "changing mode to HEAT_COOL");
-        this->setPowerSetting("OFF");
+        //this->setPowerSetting("OFF");
         break;
     default:
         ESP_LOGW("control", "unsupported mode");
@@ -286,7 +286,6 @@ climate::ClimateTraits CN105Climate::traits() {
 climate::ClimateTraits& CN105Climate::config_traits() {
     return traits_;
 }
-
 
 void CN105Climate::(const char* setting) {
     int index = lookupByteMapIndex(MODE_MAP, 6, setting);
