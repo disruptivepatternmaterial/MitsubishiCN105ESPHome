@@ -160,7 +160,7 @@ void CN105Climate::createPacket(uint8_t* packet) {
 
     if (this->wantedSettings.mode != nullptr) {
         ESP_LOGD(TAG, "heatpump mode -> %s", getModeSetting());
-        packet[9] = MODE[lookupByteMapIndex(MODE_MAP, 5, getModeSetting(), "mode (write)")];
+        packet[9] = MODE[lookupByteMapIndex(MODE_MAP, 6, getModeSetting(), "mode (write)")];
         packet[6] += CONTROL_PACKET_1[1];
     }
 
