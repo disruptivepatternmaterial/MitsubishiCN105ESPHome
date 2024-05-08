@@ -176,7 +176,7 @@ void CN105Climate::getSettingsFromResponsePacket() {
     receivedSettings.connected = true;      // we're here so we're connected (actually not used property)
     receivedSettings.power = lookupByteMapValue(POWER_MAP, POWER, 2, data[3], "power reading");
     receivedSettings.iSee = data[4] > 0x08 ? true : false;
-    receivedSettings.mode = lookupByteMapValue(MODE_MAP, MODE, 5, receivedSettings.iSee ? (data[4] - 0x08) : data[4], "mode reading");
+    receivedSettings.mode = lookupByteMapValue(MODE_MAP, MODE, 6, receivedSettings.iSee ? (data[4] - 0x08) : data[4], "mode reading");
 
     ESP_LOGD("Decoder", "[Power : %s]", receivedSettings.power);
     ESP_LOGD("Decoder", "[iSee  : %d]", receivedSettings.iSee);

@@ -62,7 +62,7 @@ static const int RCVD_PKT_FUNCTIONS = 7;
 // the nb of request without response before we declare UART is not connected anymore
 static const int MAX_NON_RESPONSE_REQ = 5;
 
-static const uint8_t CONTROL_PACKET_1[5] = { 0x01,    0x02,  0x04,  0x08, 0x10 };
+static const uint8_t CONTROL_PACKET_1[5] = { 0x01, 0x02, 0x04, 0x08, 0x10 };
 //{"POWER","MODE","TEMP","FAN","VANE"};
 static const uint8_t CONTROL_PACKET_2[1] = { 0x01 };
 //{"WIDEVANE"};
