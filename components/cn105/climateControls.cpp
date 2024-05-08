@@ -264,6 +264,10 @@ void CN105Climate::updateAction() {
     case climate::CLIMATE_MODE_FAN_ONLY:
         this->action = climate::CLIMATE_ACTION_FAN;
         break;
+    case climate::CLIMATE_MODE_HEAT_COOL:
+        //this->setActionIfOperatingAndCompressorIsActiveTo(climate::CLIMATE_ACTION_COOLING);
+        this->setActionIfOperatingTo(climate::CLIMATE_ACTION_HEAT_COOL);
+        break;
     default:
         this->action = climate::CLIMATE_ACTION_OFF;
     }
