@@ -287,7 +287,7 @@ climate::ClimateTraits& CN105Climate::config_traits() {
     return traits_;
 }
 
-void CN105Climate::(const char* setting) {
+void CN105Climate::setModeSetting(const char* setting) {
     int index = lookupByteMapIndex(MODE_MAP, 6, setting);
     if (index > -1) {
         wantedSettings.mode = MODE_MAP[index];
