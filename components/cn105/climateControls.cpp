@@ -251,6 +251,12 @@ void CN105Climate::controlMode() {
         this->setModeSetting("AUTO");
         this->setPowerSetting("ON");
         break;
+    case climate::CLIMATE_MODE_HEAT_COOL:
+        ESP_LOGI("control", "changing mode to HEAT_COOL");
+        //call new function to figure out the mode for this
+        this->setModeSetting("HEAT_COOL");
+        this->setPowerSetting("ON");
+        break;
     case climate::CLIMATE_MODE_FAN_ONLY:
         ESP_LOGI("control", "changing mode to FAN_ONLY");
         this->setModeSetting("FAN");
@@ -370,6 +376,15 @@ void CN105Climate::updateAction() {
             ESP_LOGE(TAG, "AUTO mode is not supported by this unit");
         }
         break;
+    case climate::CLIMATE_MODE_HEAT_COOL:
+        if (this->current_temperature <= this->target_low_temperature + 2.0) {
+            this->setActionIfOperatingTo(climate::CLIMATE_ACTION_HEATING);
+        } else if (this->current_temperature >= this->target_high_temperature - 2.0) {
+            this->setActionIfOperatingTo(climate::CLIMATE_ACTION_COOLING);
+        } else {
+            this->setActionIfOperatingTo(climate::CLIMATE_ACTION_FAN);
+        }
+        break;
 
     case climate::CLIMATE_MODE_DRY:
         //this->setActionIfOperatingAndCompressorIsActiveTo(climate::CLIMATE_ACTION_DRYING);
@@ -403,7 +418,7 @@ climate::ClimateTraits& CN105Climate::config_traits() {
 
 
 void CN105Climate::setModeSetting(const char* setting) {
-    int index = lookupByteMapIndex(MODE_MAP, 5, setting);
+    int index = lookupByteMapIndex(MODE_MAP, 6, setting);
     if (index > -1) {
         wantedSettings.mode = MODE_MAP[index];
     } else {
@@ -456,3 +471,7 @@ void CN105Climate::set_remote_temperature(float setting) {
     ESP_LOGD(LOG_REMOTE_TEMP, "setting remote temperature to %f", this->remoteTemperature_);
 }
 
+void CN105Climate::setHeatCoolMode(float low_temp, float high_temp) {
+    if 
+    this->setModeSetting("AUTO");
+}
